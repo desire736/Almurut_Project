@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator
 from django.db import models
 
@@ -43,3 +44,9 @@ class ProductGallery(models.Model):
    class Meta:
       verbose_name_plural = 'Галерея товаров'
       verbose_name = 'Галерея товара'
+
+
+# class ProductRating(models.Model):
+#
+#    user = models.ForeignKey(User, on_delete=models.CASCADE)
+#    object_id =
