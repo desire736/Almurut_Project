@@ -17,6 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from market.views import HomeView, Custom404View, FaqView, FavoritesView, LoginView, ProductDetailView, ProductListView, \
+    RegisterView, ShoppingCartView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('404_error/', Custom404View.as_view(), name = '404_error'),
+    path('faq_page/', FaqView.as_view(), name = 'faq_page'),
+    path('favorites/', FavoritesView.as_view(), name = 'favorites_list'),
+    path('home/', HomeView.as_view(), name = 'home'),
+    path('login_page/', LoginView.as_view(), name = 'login_page'),
+    path('product_detail/', ProductDetailView.as_view(), name = 'product_detail_list'),
+    path('product_list/', ProductListView.as_view(), name = 'product_list'),
+    path('register_page/', RegisterView.as_view(), name = 'register_page'),
+    path('shopping_cart/', ShoppingCartView.as_view(), name = 'shopping_cart_list' )
 ]

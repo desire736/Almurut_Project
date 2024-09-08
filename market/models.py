@@ -16,6 +16,7 @@ class ProductCategory(models.Model):
 class Product(models.Model):
    '''Модель Товара'''
 
+   object = None
    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, related_name='продукты')
    name = models.CharField(max_length=100)
 

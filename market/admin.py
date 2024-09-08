@@ -4,13 +4,14 @@ from .models import ProductCategory, Product, ProductGallery
 class ProductImageInline(admin.TabularInline):
    model = ProductGallery
    extra = 1
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
    list_display = ['name']
    search_fields = ['name']
 
    inlines = [ProductImageInline]
-   list_display = ['gallery']
+   # list_display = ['gallery']
 
 @admin.register(ProductCategory)
 class CategoryAdmin(admin.ModelAdmin):
