@@ -24,12 +24,6 @@ class HomeView(TemplateView):
     template_name = 'index.html'
 
 
-
-class LoginView(TemplateView):
-    template_name = 'login.html'
-
-
-
 class ProductDetailView(TemplateView):
     template_name = 'product-detail.html'
 
@@ -47,12 +41,6 @@ class ProductListView(TemplateView):
     #         'page_obj': page_obj
     #     }
     #     return context
-
-
-
-class RegisterView(TemplateView):
-    template_name = 'register.html'
-
 
 
 class ShoppingCartView(TemplateView):
