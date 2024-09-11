@@ -14,8 +14,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
+
 from django.urls import path
+
 
 from market.views import HomeView, Custom404View, FaqView, FavoritesView, ProductDetailView, ProductListView, \
      ShoppingCartView
@@ -37,4 +41,4 @@ urlpatterns = [
     path('user_registration_page/', UserMakeRegistrationView.as_view(), name='make_registration_user')
 ]
 
-# urlpatterns += static
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
