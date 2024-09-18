@@ -30,3 +30,7 @@ class CustomUser(AbstractUser):
         verbose_name_plural = 'Пользователи'
         verbose_name = 'Пользователь'
         unique_together = ('first_name', 'last_name',)
+
+
+class ProductUserRating:
+    pass

@@ -32,6 +32,19 @@ class Product(models.Model):
 
    new_expiry_date = models.DateField()
 
+   def __str__(self):
+      return self.name
+
+
+   def get_price_with_sales(self):
+      '''Возвращает цену с учётом скидки'''
+
+      if self.price is None or self.sales_percent is None:
+         return self.price
+
+      if self.sales_percent == 0:
+         return self.price
+
    class Meta:
       verbose_name_plural = 'Товары'
       verbose_name = 'Товар'

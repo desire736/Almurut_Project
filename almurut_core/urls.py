@@ -27,12 +27,16 @@ from users.views import LoginView, UsersRegisterView, UserMakeRegistrationView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('404_error/', Custom404View.as_view(), name = '404_error'),
     path('faq_page/', FaqView.as_view(), name = 'faq_page'),
+
     path('favorites/', FavoritesView.as_view(), name = 'favorites_list'),
     path('home/', HomeView.as_view(), name = 'home'),
-    path('product_detail/', ProductDetailView.as_view(), name = 'product_detail_list'),
-    path('product_list/', ProductListView.as_view(), name = 'product_list'),
+
+    path('product_detail/<int:pk>/', ProductDetailView.as_view(), name = 'product_detail_list'),
+    path('product_list/', ProductListView.as_view(), name = 'send-feedback-url'),
+
     path('shopping_cart/', ShoppingCartView.as_view(), name = 'shopping_cart_list' ),
 
     path('register_page/', UsersRegisterView.as_view(), name='register_page'),

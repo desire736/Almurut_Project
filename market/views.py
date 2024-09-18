@@ -1,8 +1,11 @@
 from django.core.paginator import Paginator
+from django.http import Http404
 from django.shortcuts import render
+from django.views import View
 from django.views.generic import TemplateView
 
 from market.models import Product
+from users.models import ProductUserRating
 
 
 class Custom404View(TemplateView):
@@ -27,6 +30,35 @@ class HomeView(TemplateView):
 class ProductDetailView(TemplateView):
     template_name = 'product-detail.html'
 
+    def get_context_data(self, **kwargs):
+
+        try:
+            product: Product.object.get(id=kwargs['pk'])
+        except Product.DoesNotExist:
+            raise Http404
+
+        context = {
+            'product': product
+
+        }
+
+
+
+
+class SendProductFeedbackView(View):
+
+    def post(self, request, *args, **kwargs):
+        data = request.POST
+        rating_value = data['rating_value']
+
+        product = Product.object.get(id = kwargs['pk'])
+        user = request.user
+
+       # ProductUserRating.object.create(
+       #     rating=rating_value,
+       #     product=product,
+       #     user=user,
+       # )
 
 
 class ProductListView(TemplateView):
