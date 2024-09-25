@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.shortcuts import render
@@ -37,9 +39,14 @@ class ProductDetailView(TemplateView):
         except Product.DoesNotExist:
             raise Http404
 
-        context = {
-            'product': product
+        categoty_other_product_list = (
+            Product.object.filter(category=product.category).exlude(id=product.id)
+        )
 
+        context = {
+            'product': product,
+            'other_product_len': categoty_other_product_list,
+            'new': datetime.datetime.now().date()
         }
 
 
@@ -63,16 +70,13 @@ class SendProductFeedbackView(View):
 
 class ProductListView(TemplateView):
     template_name = 'product-list.html'
-    # def get_context_data(self, **kwargs):
-    #     product = Product.objects.all()
-    #     paginator = Paginator(product, 10)
-    #     page_number = self.request.GET.get('page', 1)
-    #     page_obj = paginator.get_page(page_number)
-    #
-    #     context = {
-    #         'page_obj': page_obj
-    #     }
-    #     return context
+
+    def get_context_data(self, **kwargs):
+        context = {
+            'public_list': Product.object.all(),
+            'new': datetime.datetime.now().date()
+        }
+        return context
 
 
 class ShoppingCartView(TemplateView):
