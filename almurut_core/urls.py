@@ -22,7 +22,7 @@ from django.urls import path
 
 
 from market.views import HomeView, Custom404View, FaqView, FavoritesView, ProductDetailView, ProductListView, \
-     ShoppingCartView
+    ShoppingCartView, AddProductToFavorite
 from users.views import LoginView, UsersRegisterView, UserMakeRegistrationView
 
 urlpatterns = [
@@ -32,6 +32,8 @@ urlpatterns = [
     path('faq_page/', FaqView.as_view(), name = 'faq_page'),
 
     path('favorites/', FavoritesView.as_view(), name = 'favorites_list'),
+    path('add-product-to-favorite/<int:pk>/', AddProductToFavorite.as_view()),
+
     path('home/', HomeView.as_view(), name = 'home'),
 
     path('product_detail/<int:pk>/', ProductDetailView.as_view(), name = 'product_detail_list'),

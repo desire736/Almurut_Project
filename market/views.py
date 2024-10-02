@@ -1,4 +1,5 @@
 from datetime import datetime
+from lib2to3.fixes.fix_input import context
 
 from django.core.paginator import Paginator
 from django.http import Http404
@@ -81,3 +82,13 @@ class ProductListView(TemplateView):
 
 class ShoppingCartView(TemplateView):
     template_name = 'shopping-cart.html'
+
+
+
+
+class AddProductToFavorite(TemplateView):
+    template_name = 'favorites.html'
+
+    def get_context_data(self, **kwargs):
+        context = {}
+        return context

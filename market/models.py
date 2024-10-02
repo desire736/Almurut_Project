@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator
 from django.db import models
+from django.db.models import ForeignKey
+
 
 class ProductCategory(models.Model):
    '''Категории Продукта'''
@@ -60,7 +62,4 @@ class ProductGallery(models.Model):
       verbose_name = 'Галерея товара'
 
 
-# class ProductRating(models.Model):
-#
-#    user = models.ForeignKey(User, on_delete=models.CASCADE)
-#    object_id =
+

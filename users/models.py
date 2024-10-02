@@ -19,16 +19,15 @@ class CustomUser(AbstractUser):
     birthdate = models.DateField(null=True)
 
     phone_number = models.CharField(
-            max_length=22,
-            null=True,
-            blank=True
-        )
+                max_length=22,
+                blank=True
+            )
 
     objects = CustomUserManager()
 
     class Meta:
-        verbose_name_plural = 'Пользователи'
         verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
         unique_together = ('first_name', 'last_name',)
 
 
